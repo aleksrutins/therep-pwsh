@@ -4,10 +4,12 @@ Import-Module Pode.Web
 
 Use-DotEnv
 
+Sync-Migrations
+
 Start-PodeServer {
     New-PodeLoggingMethod -Terminal | Enable-PodeErrorLogging -Levels Error,Warning,Informational
 
-    Add-PodeEndpoint -Address "0.0.0.0" -Port ($env:PORT ?? 8080) -Protocol Http
+    Add-PodeEndpoint -Address ($env:LISTEN_ADDR ?? "localhost") -Port ($env:PORT ?? 8080) -Protocol Http
 
     Use-PodeWebTemplates -Title 'The Rep'
 

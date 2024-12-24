@@ -1,5 +1,9 @@
+function Sync-Migrations {
+    psql $env:DATABASE_URL -f .\schema.sql
+}
+
 function Read-DBQuery ([string]$query) {
-    return $query | psql --csv $env:DATABASE_URL | ConvertFrom-Csv
+    return $query | psql $env:DATABASE_URL --csv | ConvertFrom-Csv
 }
 
 function Read-PlayScripts {
@@ -8,4 +12,4 @@ function Read-PlayScripts {
     "
 }
 
-Export-ModuleMember -Function Read-DBQuery,Read-PlayScripts
+Export-ModuleMember Read-DBQuery,Read-PlayScripts,Sync-Migrations
