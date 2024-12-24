@@ -5,7 +5,9 @@ Import-Module Pode.Web
 Use-DotEnv
 
 Start-PodeServer {
-    Add-PodeEndpoint -Address localhost -Port ($env:PORT ?? 8080) -Protocol Http
+    New-PodeLoggingMethod -Terminal | Enable-PodeErrorLogging -Levels Error,Warning,Informational
+
+    Add-PodeEndpoint -Address "0.0.0.0" -Port ($env:PORT ?? 8080) -Protocol Http
 
     Use-PodeWebTemplates -Title 'Example' -Theme Dark
 
