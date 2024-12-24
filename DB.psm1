@@ -1,5 +1,5 @@
 function Sync-Migrations {
-    psql $env:DATABASE_URL -f .\schema.sql
+    psql $env:DATABASE_URL -f ./schema.sql
 }
 
 function Read-DBQuery ([string]$query) {
