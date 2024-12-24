@@ -9,7 +9,7 @@ Start-PodeServer {
 
     Add-PodeEndpoint -Address "0.0.0.0" -Port ($env:PORT ?? 8080) -Protocol Http
 
-    Use-PodeWebTemplates -Title 'Example' -Theme Dark
+    Use-PodeWebTemplates -Title 'The Rep'
 
     Add-PodeWebPage -Name 'New Works' -Icon 'Script-Outline' -ScriptBlock {
         New-PodeWebCard -Content @(
