@@ -8,7 +8,7 @@ function Read-DBQuery ([string]$query) {
 
 function Read-PlayScripts {
     return Read-DBQuery "
-    SELECT scripts.*, authors.name as author_name FROM scripts LEFT JOIN authors ON authors.id = author
+    SELECT Scripts.*, Users.Name as AuthorName FROM Scripts LEFT JOIN Authors ON Authors.Id = Author
     "
 }
 

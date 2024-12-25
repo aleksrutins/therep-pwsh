@@ -1,6 +1,6 @@
-Import-Module .\Env.psm1
-Import-Module .\DB.psm1
-Import-Module Pode.Web
+Import-Module `
+    .\Env.psm1, .\DB.psm1, .\Pages\NewWorks.psm1, `
+    Pode.Web
 
 Use-DotEnv
 
@@ -14,17 +14,7 @@ Start-PodeServer {
     Use-PodeWebTemplates -Title 'The Rep'
 
     Add-PodeWebPage -Name 'New Works' -Icon 'Script-Outline' -ScriptBlock {
-        New-PodeWebCard -Content @(
-            New-PodeWebTable -Name 'Scripts' -ScriptBlock {
-                foreach ($script in (Read-PlayScripts)) {
-                    [ordered]@{
-                        Name = $script.name
-                        Description = $script.desc
-                        Author = $script.author_name
-                    }
-                }
-            }
-        )
+        Show-NewWorksPage
     }
 
     Add-PodeWebPage -Name 'One Acts' -Icon 'Drama-Masks' -ScriptBlock {
